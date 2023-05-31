@@ -1,13 +1,22 @@
 import { useState } from 'react'
 import './App.css'
 import { Home } from './pages/Home'
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import {  CreatePost  } from './components/create';
+
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Home />
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route exact path='/newpost' element={< CreatePost/>}></Route>
+        </Routes>
+      </Router>
     </>
   )
 }
