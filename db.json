@@ -6,9 +6,9 @@
       "author": "typicode"
     },
     {
-      "id": 2,
       "title": "react",
-      "author": "Juliana"
+      "author": "Julianah",
+      "id": 2
     },
     {
       "title": "teste",
@@ -24,11 +24,6 @@
       "title": "teste",
       "author": "testando",
       "id": 5
-    },
-    {
-      "title": "testinho",
-      "author": "teste",
-      "id": 6
     }
   ],
   "comments": [

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { api } from "../service/api";
 import { useNavigate } from "react-router-dom";
 import { Detail } from "../components/details";
+import styles from './home.module.css'; // Importe o arquivo CSS
 
 export function Home() {
   const [posters, setPosters] = useState([]);
@@ -28,6 +29,7 @@ export function Home() {
 
   const handleOpenModal = (poster) => {
     setSelectedPoster(poster);
+    console.log(poster)
   };
 
   const handleCloseModal = () => {
@@ -49,8 +51,8 @@ export function Home() {
           <div>
             {selectedPoster && (
               <>
-               <Detail poster={selectedPoster} />
-               <div onClick={handleCloseModal}>x</div>
+                <Detail poster={selectedPoster} />
+                <div onClick={handleCloseModal}>x</div>
               </>
             )}
           </div>

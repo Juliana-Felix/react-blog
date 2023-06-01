@@ -1,54 +1,67 @@
 import React, { useState } from 'react';
+import { api } from "../service/api"
+import styles from './detail.module.css'; // Importe o arquivo CSS
+
 
 export function Detail({ poster }) {
-    const [postter, setPostter] = useState({
-        Ptitulo: poster.title,
-        Pauthor: poster.author
-      });
+  const [postter, setPostter] = useState({
+    Pid: poster.id,
+    Ptitulo: poster.title,
+    Pauthor: poster.author
+  });
 
   const [isOpen, setIsOpen] = useState(true);
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
+  const [error, setError] = useState('');
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-        try {
-        const response = await api.put('/',{
-            title,
-            author,
-        });
-        console.log(response.data);
-        } catch (error) {
-        console.error("Ocorreu um erro ao enviar o formulário:", error);
-        }
-        setTitle('')
-        setAuthor('')
-    };
+    try {
+      const response = await api.put(`/${postter.Pid}`, {
+        title: postter.Ptitulo,
+        author: postter.Pauthor,
+      });
+      console.log(response.data);
+      setError(''); // Limpa o erro se a requisição for bem-sucedida
+      window.location.reload(); // Recarrega a página
+    } catch (error) {
+      console.error("Ocorreu um erro ao enviar o formulário:", error);
+      setError("Erro ao enviar o formulário. Por favor, tente novamente."); // Define a mensagem de erro
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await api.delete(`/${postter.Pid}`);
+      console.log(response.data);
+      setError(''); // Limpa o erro se a requisição for bem-sucedida
+      window.location.reload(); // Recarrega a página
+    } catch (error) {
+      console.error("Ocorreu um erro ao excluir o registro:", error);
+      setError("Erro ao excluir o registro. Por favor, tente novamente."); // Define a mensagem de erro
+    }
+  };
 
   return (
     <div>
       {isOpen && (
-       /* <div className="modal">
-          <div className="modal-content">
-            <h2>{poster.title}</h2>
-            <p>Autor: {poster.author}</p>
-          </div>
-        </div>*/
         <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Titulo:</label>
-            <input type="text" value={postter.Ptitulo} onChange={(e) => setPostter.Ptitulo(e.target.value)}/>
-            <label htmlFor="author">Autor:</label>
-            <input type="text" value={postter.Pauthor} onChange={(e) => setPostter.Pauthor(e.target.value)}  />
-            <button>Alterar</button>
+          {error && <div>{error}</div>} {/* Renderiza a mensagem de erro, se houver */}
+          <label htmlFor="title">Titulo:</label>
+          <input
+            type="text"
+            value={postter.Ptitulo}
+            onChange={(e) => setPostter({ ...postter, Ptitulo: e.target.value })}
+          />
+          <label htmlFor="author">Autor:</label>
+          <input
+            type="text"
+            value={postter.Pauthor}
+            onChange={(e) => setPostter({ ...postter, Pauthor: e.target.value })}
+          />
+          <button onClick={handleSubmit}>Alterar</button>
+          <button type="button" onClick={handleDelete}>Excluir</button>
         </form>
       )}
     </div>
