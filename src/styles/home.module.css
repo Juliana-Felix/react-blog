@@ -15,3 +15,8 @@
   color: white;
   padding: 10px 20px;
 }
+
+.poster {
+  padding: 20px 205px 20px 205px;
+  border: 1px solid rgb(196, 196, 196);
+}

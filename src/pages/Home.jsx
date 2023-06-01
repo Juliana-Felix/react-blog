@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { api } from "../service/api";
 import { useNavigate } from "react-router-dom";
 import { Detail } from "../components/details";
-import styles from './home.module.css'; // Importe o arquivo CSS
+import styles from "../styles/home.module.css" // Importe o arquivo CSS
 
 export function Home() {
   const [posters, setPosters] = useState([]);
@@ -42,10 +42,10 @@ export function Home() {
         <>
           <button onClick={handleCreatePost}>Criar novo poster</button>
           {posters.map((data) => (
-            <div key={data.id} onClick={() => handleOpenModal(data)}>
-              {data.title}
+            <div className={styles.poster} key={data.id} onClick={() => handleOpenModal(data)}>
+              <h2>Título: {data.title}</h2>
               <br />
-              {data.author}
+              <h3>Autor: {data.author}</h3>
             </div>
           ))}
           <div>

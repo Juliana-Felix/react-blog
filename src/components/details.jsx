@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { api } from "../service/api"
-import styles from './detail.module.css'; // Importe o arquivo CSS
 
 
 export function Detail({ poster }) {
