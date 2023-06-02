@@ -51,8 +51,7 @@ export function Home() {
           <div>
             {selectedPoster && (
               <>
-                <Detail poster={selectedPoster} />
-                <div onClick={handleCloseModal}>x</div>
+                <Detail poster={selectedPoster} onCloseModal={handleCloseModal} />
               </>
             )}
           </div>

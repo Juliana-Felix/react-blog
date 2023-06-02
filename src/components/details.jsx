@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { api } from "../service/api"
+import styles from "../styles/detail.module.css" // Importe o arquivo CSS
 
 
-export function Detail({ poster }) {
+export function Detail({ poster, onCloseModal }) {
   const [postter, setPostter] = useState({
     Pid: poster.id,
     Ptitulo: poster.title,
@@ -45,23 +46,32 @@ export function Detail({ poster }) {
   return (
     <div>
       {isOpen && (
-        <form onSubmit={handleSubmit}>
-          {error && <div>{error}</div>} {/* Renderiza a mensagem de erro, se houver */}
-          <label htmlFor="title">Titulo:</label>
-          <input
-            type="text"
-            value={postter.Ptitulo}
-            onChange={(e) => setPostter({ ...postter, Ptitulo: e.target.value })}
-          />
-          <label htmlFor="author">Autor:</label>
-          <input
-            type="text"
-            value={postter.Pauthor}
-            onChange={(e) => setPostter({ ...postter, Pauthor: e.target.value })}
-          />
-          <button onClick={handleSubmit}>Alterar</button>
-          <button type="button" onClick={handleDelete}>Excluir</button>
-        </form>
+        <div className={styles.formulario_screen}>
+          <form onSubmit={handleSubmit} className={styles.formulario}>
+            <div onClick={onCloseModal} className={styles.botao_fechar}>X</div>
+            {error && <div>{error}</div>} {/* Renderiza a mensagem de erro, se houver */}
+            <div className={styles.titulo}>
+              <label htmlFor="title">Titulo:</label>
+              <input
+                type="text"
+                value={postter.Ptitulo}
+                onChange={(e) => setPostter({ ...postter, Ptitulo: e.target.value })}
+              /><br></br>
+            </div>
+            <div>
+              <label htmlFor="author">Autor:</label>
+              <input
+                type="text"
+                value={postter.Pauthor}
+                onChange={(e) => setPostter({ ...postter, Pauthor: e.target.value })}
+              /><br></br>
+            </div>
+            <div className={styles.button_container}>
+              <button onClick={handleSubmit} className={styles.botao_alterar}>Alterar</button><br></br>
+              <button type="button" onClick={handleDelete} className={styles.botao_excluir}>Excluir</button>
+            </div>
+          </form>
+        </div>
       )}
     </div>
   );

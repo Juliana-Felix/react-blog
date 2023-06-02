@@ -1,38 +1,22 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "title": "react",
-      "author": "Julianah",
-      "id": 2
-    },
-    {
-      "title": "teste",
-      "author": "teste",
+      "title": "Uma vida sem desafios não vale a pena ser vivida.",
+      "author": "Sócrates",
       "id": 3
     },
     {
-      "title": "testando",
-      "author": "testando",
-      "id": 4
+      "title": "O que sabemos é uma gota, oque ignoramos é um oceano.",
+      "author": "Isaac Newton",
+      "id": 5
     },
     {
-      "title": "teste",
-      "author": "testando",
-      "id": 5
+      "title": "Se você quiser entender o universo, pense em energia, frequência e vibração. ",
+      "author": "Nikola Telas",
+      "id": 6
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

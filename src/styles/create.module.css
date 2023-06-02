@@ -1,0 +1,23 @@
+.create_screen {
+  background-color: rgba(232, 158, 62, 0.445);
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.botao_voltar {
+  background-color: beige;
+  width: 230px;
+  margin-top: 55px;
+  margin-bottom: 10px;
+}
+
+.botao_inserir {
+  margin-top: 50px;
+  background-color: rgba(72, 244, 24, 0.431);
+  width: 230px;
+}
+
+.icon_voltar {
+  width: 18px;
+}
