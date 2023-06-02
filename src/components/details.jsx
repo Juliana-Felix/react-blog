@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { api } from "../service/api"
-import styles from "../styles/detail.module.css" // Importe o arquivo CSS
+import styles from "../styles/detail.module.css"
 
 
 export function Detail({ poster, onCloseModal }) {
